@@ -1,0 +1,76 @@
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+struct Node{
+ int Data;
+ struct Node *Next;
+};
+ struct Node *Head, *NewNode, *Temp;
+ int Head1=0;
+
+int Insert();
+int Display();
+
+int main()
+{
+ int CH;
+ char CH1;
+ RE:
+ clrscr();
+ printf ("Please Choose an Option\n");
+ printf("1. Insert Node \n2. Display Node\n");
+ scanf("%d",&CH);
+ switch(CH)
+  {
+   case 1:
+    Insert();
+    break;
+   case 2:
+    Display();
+    break;
+  };
+
+ printf("Do You want to Continue ? (Y/N) ");
+ scanf("%c",&CH1);
+ scanf("%c",&CH1);
+ if(CH1=='Y'||CH1=='y')
+  goto RE;
+ else
+  printf ("\nThank You !");
+  getch();
+return 0;
+}
+
+
+int Insert()
+{
+ NewNode=(struct Node*)malloc(sizeof(struct Node));
+ printf("Enter The Data : ");
+ scanf("%d",&NewNode->Data);
+ NewNode->Next=0;
+ if (Head1==0)
+ {
+  Head=Temp=NewNode;
+  Head1++;
+ }
+ else
+ {
+  Temp->Next=NewNode;
+  Temp=NewNode;
+ }
+ printf("Node Inserted\n");
+ return 0;
+};
+
+int Display()
+{
+ Temp=Head;
+ while(Temp!=0){
+ printf ("Element is %d\n",Temp->Data);
+ printf("%d",Temp);
+ Temp=Temp->Next;
+ }
+ return 0;
+};
