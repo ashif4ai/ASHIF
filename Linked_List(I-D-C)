@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+ int Data;
+ struct Node *Next;
+};
+
+struct Node *Head=NULL, *NewNode, *Temp;
+
+void Insert();
+void Display();
+void Count();
+int main()
+{
+    int CH;
+    char Co;
+do{
+ printf ("Please Choose an Option\n");
+ printf("1. Insert Node \n2. Display Node\n3. Count Node\n");
+ scanf("%d",&CH);
+ switch(CH)
+  {
+   case 1:
+    Insert();
+    break;
+   case 2:
+    Display();
+    break;
+   case 3:
+    Count();
+    break;    
+   default:
+   printf("...Invailed Input...");
+  };
+ printf("\nDo You want to Continue ? (Y/N) ");
+ scanf("%c",&Co);
+ scanf("%c",&Co);
+ } 
+    while (Co=='Y'||Co=='y');
+ printf ("\nThank You !");
+    return 0;
+}
+
+void Insert()
+{
+    NewNode=(struct Node*)malloc(sizeof(struct Node));
+    if(NewNode==NULL)
+     printf("Unable to Allocate Memory !!");
+    else
+    {
+     printf("Enter Data: ");
+     scanf("%d",&NewNode->Data);
+     NewNode->Next=NULL;
+     if(Head==NULL){
+         Head=Temp=NewNode;
+     }
+     else{
+         
+         Temp->Next=NewNode;
+         Temp=NewNode;
+     }
+        
+    }
+};
+
+void Display()
+{
+    struct Node *Temp;
+    if (Head==NULL)
+     {
+        printf("List is Empty. ");
+     }
+    else
+     {  Temp=Head;
+        printf ("Elements are ");
+        while(Temp!=NULL)
+         {
+         printf("%d ",Temp->Data);
+         Temp=Temp->Next;
+         };
+    printf("\n");     
+    }
+};
+void Count()
+{
+    
+    struct Node *Temp;
+    int Count=0;
+    if (Head==NULL)
+     {
+        printf("List is Empty. ");
+     }
+    else
+     {  Temp=Head;
+        while(Temp!=NULL)
+         {
+         Count++;
+         Temp=Temp->Next;
+         };
+    printf("There are %d Nodes Available.\n",Count);     
+    }
+};
