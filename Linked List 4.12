@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+ int Data;
+ struct Node *Next;
+};
+
+struct Node *Head=NULL, *NewNode=NULL;
+int Count;
+int CountNode();
+void Display();
+void InsertBeginning();
+void InsertEnd();
+void InsertAfter(); 
+int main()
+{
+    int CH;
+    char Co;
+do{
+ printf ("Please Choose an Option\n");
+ printf("1. Display Node\n2. Count Node \n3. Insert at Beginning\n4. Insert at End\n5. Insert After Position \n0. Exit. ");
+ scanf("%d",&CH);
+ switch(CH)
+  {
+   case 1:
+    Display();
+    break;
+   case 3:
+    InsertBeginning();
+    break;
+   case 2:
+   printf("There are %d Node. ",CountNode());
+   break;
+   case 4:
+    InsertEnd();
+    break;
+   case 5:
+    InsertAfter();
+    break;  
+  };
+} while (CH!=0);
+ printf ("\nThank You !");
+    return 0;
+}
+
+void InsertBeginning()
+{
+    NewNode=(struct Node*)malloc(sizeof(struct Node));
+    printf("Enter Element : ");
+    scanf("%d",&NewNode->Data);
+    NewNode->Next=Head;
+    Head=NewNode;
+    printf("Node Inserted ");
+};
+
+void Display()
+{
+    struct Node *Temp;
+    if(Head==NULL)
+    {
+        printf("List is Empty");
+    }
+    else
+    {
+        Temp=Head;
+        printf("Elements are ");
+        while(Temp!=NULL)
+        {
+            printf("%d ",Temp->Data);
+            Temp=Temp->Next;
+        }
+    }
+};
+
+int CountNode()
+{
+    struct Node *Temp;
+    Count=0;
+    if (Head==NULL)
+        return (Count);
+    else{
+        Temp=Head;
+        while(Temp!=NULL)
+        {
+            Count ++;
+            Temp=Temp->Next;
+        }
+        return (Count);
+    }
+};
+
+void InsertEnd()
+{
+    struct  Node *Temp;
+    if(Head==NULL)
+    {
+        printf("List is Empty. ");
+    }
+    else 
+    {
+        NewNode=(struct Node*)malloc(sizeof(struct Node));
+        printf("Enter Element : ");
+        scanf("%d",&NewNode->Data);
+        NewNode->Next=NULL;
+        Temp=Head;
+        while(Temp->Next!=NULL)
+        {
+            Temp=Temp->Next;    
+        }
+        Temp->Next=NewNode;
+        printf("Node Inserted at End. ");
+    }
+};
+
+void InsertAfter()
+{
+    int len,pos,i=1;
+    printf ("Insert Node After Which Position : ");
+    scanf("%d",&pos);
+    len=CountNode();
+    if(pos>len)
+    printf("Inviled Position. ");
+    else
+    {
+        struct Node *Temp, *NewNode;
+        Temp=Head;    
+        NewNode=(struct Node*)malloc(sizeof(struct Node));
+        printf("Enter Element : ");
+        scanf("%d",&NewNode->Data);
+        while(i<pos)
+        {
+            Temp=Temp->Next;
+            i++;
+        }
+        NewNode->Next=Temp->Next;
+        Temp->Next=NewNode;
+        printf("Node Inserte After %d Position. ",pos);
+    } 
+};
