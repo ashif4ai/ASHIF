@@ -1,0 +1,47 @@
+#include<iostream>
+#include<conio.h>
+#include<string.h>
+using namespace std;
+
+// Creating Class;
+class car{
+	private:
+		string color;	
+		int speed;
+		long int price;
+	public:
+		void setColor(string);
+		void setSpeed(int);
+		void setPrice(long int);
+		void showData(void);
+};
+
+//Defining Member Functions;
+void car::setColor(string C){
+	color=C;
+}
+void car::setPrice(long int P){
+	price=P;
+}
+void car::setSpeed(int S){
+	speed=S;
+}
+void car::showData(){
+	cout<<"Color is "<<color<<endl;
+	cout<<"Speed is "<<speed<<endl;
+	cout<<"Price is "<<price<<endl;
+}
+
+//Creating Main Function;
+int main(){
+	car tata,mahindra;			//Creating Objects;
+	tata.setColor("Red");		//Initializing Objects;
+	tata.setSpeed(100);
+	tata.setPrice(50000);
+	mahindra.setColor("Green");
+	mahindra.setSpeed(120);
+	mahindra.setPrice(60000);
+	mahindra.showData();
+	tata.showData();
+	return 0;	
+}
